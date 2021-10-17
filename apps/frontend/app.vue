@@ -1,7 +1,16 @@
 <template>
   <div>
-    <!-- Remove this component to get started! -->
-    <h1>test</h1>
-    <NuxtWelcome />
+    <Header/>
+    <NuxtPage />
   </div>
 </template>
+
+<script lang="ts" setup>
+import './assets/tailwind.scss'
+</script>
+
+<style lang="scss">
+body {
+  @apply bg-gray-50 dark:bg-gray-900;
+}
+</style>

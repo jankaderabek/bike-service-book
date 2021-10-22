@@ -1,20 +1,15 @@
 import { defineNuxtConfig } from 'nuxt3'
 
-
 export default defineNuxtConfig({
-  ssr: false,
-  nitro: {
-    preset: 'server'
-  },
   build: {
     postcss: {
       postcssOptions: {
         plugins: {
           tailwindcss: {},
-          autoprefixer: {},
+          autoprefixer: {}
         }
       }
-    },
+    }
   },
   vite: {
     // @ts-ignore
@@ -26,4 +21,16 @@ export default defineNuxtConfig({
       ]
     }
   },
+  extendPlugins (plugins: any) {
+    const pluginIndex = plugins.findIndex(
+      // @ts-ignore
+      ({ src }) => src === '~/plugins/axios.ts'// @ts-ignore
+    )
+    const shouldBeFirstPlugin = plugins[pluginIndex]
+
+    plugins.splice(pluginIndex, 1)
+    plugins.unshift(shouldBeFirstPlugin)
+
+    return plugins
+  }
 })

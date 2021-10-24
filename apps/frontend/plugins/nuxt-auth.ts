@@ -2,10 +2,11 @@ import { defineNuxtPlugin } from '#app'
 import { AuthService } from '~/src/Infrastructure/Auth/AuthService'
 import { CookieTokenStorage } from '~/src/Infrastructure/Auth/TokenStorage'
 import { GlobalStateUserStorage } from '~/src/Infrastructure/Auth/UserStorage'
+import { AxiosAuthRepository } from '~/src/Infrastructure/Auth/AuthRepository'
 
 export default defineNuxtPlugin(async (nuxtApp) => {
   const authService = new AuthService(
-    nuxtApp.$axios,
+    new AxiosAuthRepository(nuxtApp.$axios),
     new CookieTokenStorage(nuxtApp.ssrContext?.req, nuxtApp.ssrContext?.res),
     new GlobalStateUserStorage()
   )

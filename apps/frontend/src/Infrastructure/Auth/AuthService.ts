@@ -1,27 +1,28 @@
-import { AxiosInstance } from 'axios'
 import { LoginResponse } from '~/src/Model/Auth/LoginResponse'
 import { TokenStorage } from '~/src/Infrastructure/Auth/TokenStorage'
 import { User } from '~/src/Model/Auth/User'
 import { useNuxtApp } from '#app'
 import { UserStorage } from '~/src/Infrastructure/Auth/UserStorage'
+import { AuthRepository } from '~/src/Infrastructure/Auth/AuthRepository'
+import { NewRegistrationResponse, NewUser } from '~/src/Model/Auth/Register'
 
 export class AuthService {
-  readonly #axios: AxiosInstance
+  readonly #authRepository: AuthRepository
   readonly #tokenStorage: TokenStorage
   readonly #userStorage: UserStorage
 
-  constructor (axios: AxiosInstance, tokenStorage: TokenStorage, userStorage: UserStorage) {
-    this.#axios = axios
+  constructor (authRepository: AuthRepository, tokenStorage: TokenStorage, userStorage: UserStorage) {
+    this.#authRepository = authRepository
     this.#tokenStorage = tokenStorage
     this.#userStorage = userStorage
   }
 
   public async login (email: string, password: string): Promise<LoginResponse> {
-    const loginResponse = await this.#axios.post<LoginResponse>('/auth/local', { identifier: email, password })
-    await this.#tokenStorage.save(loginResponse.data.jwt)
-    await this.#userStorage.save(loginResponse.data.user)
+    const loginResponse = await this.#authRepository.loginLocal(email, password)
+    await this.#tokenStorage.save(loginResponse.jwt)
+    await this.#userStorage.save(loginResponse.user)
 
-    return loginResponse.data
+    return loginResponse
   }
 
   public async fetchUser (): Promise<User | null> {
@@ -31,10 +32,18 @@ export class AuthService {
       return Promise.resolve(null)
     }
 
-    const userResponse = await this.#axios.get<User>('/users/me', { headers: { Authorization: `Bearer ${token}` } })
-    await this.#userStorage.save(userResponse.data)
+    const user = await this.#authRepository.fetchUser(token)
+    await this.#userStorage.save(user)
 
-    return userResponse.data
+    return user
+  }
+
+  public async register (newUser: NewUser): Promise<NewRegistrationResponse> {
+    const registrationResponse = await this.#authRepository.register(newUser)
+    await this.#tokenStorage.save(registrationResponse.jwt)
+    await this.#userStorage.save(registrationResponse.user)
+
+    return registrationResponse
   }
 
   public get loggedUser () {

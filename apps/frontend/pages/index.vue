@@ -7,7 +7,7 @@
         Go Modal Page
       </NuxtLink><br>
 
-      <NuxtLink to="/login">
+      <NuxtLink to="/auth/login">
         Login
       </NuxtLink>
     </div>

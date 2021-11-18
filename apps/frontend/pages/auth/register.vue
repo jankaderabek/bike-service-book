@@ -9,16 +9,16 @@
 </template>
 
 <script setup lang="ts">
-import { useAuthService } from '~/src/Infrastructure/Auth/AuthService'
+import { useAuth } from '~/src/User/Auth/Application/AuthFacade'
 
-const authService = useAuthService()
+const auth = useAuth()
 const router = useRouter()
 
 const email = ref<string>('')
 const password = ref<string>('')
 
 const submit = async () => {
-  await authService.register({ email: email.value, password: password.value })
-  router.push('/auth/me')
+  await auth.register({ email: email.value, password: password.value })
+  await router.push('/auth/me')
 }
 </script>

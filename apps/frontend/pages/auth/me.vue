@@ -5,9 +5,9 @@
 </template>
 
 <script setup lang="ts">
-import { useAuthService } from '~/src/Infrastructure/Auth/AuthService'
+import { useAuth } from '~/src/User/Auth/Application/AuthFacade'
 
-const authService = useAuthService()
-const loggedUser = authService.loggedUser
+const auth = useAuth()
+const loggedUser = auth.loggedUser
 
 </script>

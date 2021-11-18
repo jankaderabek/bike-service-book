@@ -14,16 +14,16 @@
 </template>
 
 <script setup lang="ts">
-import { useAuthService } from '~/src/Infrastructure/Auth/AuthService'
 import LoginForm from '~/components/Auth/LoginForm.vue'
-import { LoginFormData } from '~/src/Infrastructure/Auth/Form/LoginFormData'
+import { AuthenticateUserFormData } from '~/src/User/Auth/Infrastructure/Delivery/Form/AuthenticateUserFormData'
+import { useAuth } from '~/src/User/Auth/Application/AuthFacade'
 
 const router = useRouter()
-const authService = useAuthService()
+const auth = useAuth()
 
-const submitLogin = async (values: LoginFormData) => {
-  await authService.login(values.email, values.password)
-  router.push('/auth/me')
+const submitLogin = async (values: AuthenticateUserFormData) => {
+  await auth.login({ email: values.email, password: values.password })
+  await router.push('/auth/me')
 }
 
 </script>

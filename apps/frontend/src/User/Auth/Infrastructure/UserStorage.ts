@@ -1,6 +1,6 @@
 import type { Ref, ComputedRef } from 'vue'
 import { computed } from 'vue'
-import { User } from '~/src/Model/Auth/User'
+import { User } from '~/src/User/Domain/User'
 
 export interface UserStorage {
   save (user: User): Promise<void>

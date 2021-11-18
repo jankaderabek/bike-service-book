@@ -1,6 +1,9 @@
 import { defineNuxtConfig } from 'nuxt3'
 
 export default defineNuxtConfig({
+  typescript: {
+    strict: true
+  },
   build: {
     postcss: {
       postcssOptions: {
@@ -10,7 +13,7 @@ export default defineNuxtConfig({
         }
       }
     },
-    transpile: ['vee-validate', '@vue/devtools-api', 'yup']
+    transpile: ['vee-validate', '@vue/devtools-api', 'yup', 'lodash', 'lodash.has', 'lodash-es']
   },
   vite: {
     // @ts-ignore
@@ -22,20 +25,11 @@ export default defineNuxtConfig({
         'vee-validate',
         '@vue/devtools-api',
         'yup',
-        'nanoclone'
+        'nanoclone',
+        'lodash',
+        'lodash.has',
+        'lodash-es'
       ]
     }
   }
-  // extendPlugins (plugins: any) {
-  //   const pluginIndex = plugins.findIndex(
-  //     // @ts-ignore
-  //     ({ src }) => src === '~/plugins/axios.ts'// @ts-ignore
-  //   )
-  //   const shouldBeFirstPlugin = plugins[pluginIndex]
-  //
-  //   plugins.splice(pluginIndex, 1)
-  //   plugins.unshift(shouldBeFirstPlugin)
-  //
-  //   return plugins
-  // }
 })

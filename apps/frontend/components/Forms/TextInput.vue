@@ -1,8 +1,8 @@
 <template>
   <div>
-    <label v-if="label" for="email-address" class="sr-only">{{ label }}</label>
+    <label v-if="label" :for="name" class="sr-only">{{ label }}</label>
     <input
-      id="email-address"
+      id="name"
       v-model="value"
       :name="name"
       :type="type"

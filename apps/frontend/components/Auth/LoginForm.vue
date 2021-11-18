@@ -2,7 +2,7 @@
   <form class="mt-8 space-y-6" action="#" method="POST">
     <div class="rounded-md shadow-sm -space-y-px">
       <TextInput name="email" placeholder="Email" />
-      <TextInput name="password" placeholder="Password" />
+      <TextInput name="password" placeholder="Password" type="password" />
     </div>
 
     <div class="flex items-center justify-between">
@@ -22,21 +22,17 @@
 </template>
 
 <script setup lang="ts">
-import * as yup from 'yup'
 import { useForm } from 'vee-validate'
-import type { SchemaOf } from 'yup'
 import TextInput from '~/components/Forms/TextInput.vue'
-import { LoginFormData } from '~/src/Infrastructure/Auth/Form/LoginFormData'
+import { AuthenticateUserFormData } from '~/src/User/Auth/Infrastructure/Delivery/Form/AuthenticateUserFormData'
 
-const emit = defineEmits<{(e: 'submit', value: LoginFormData): void }>()
+const emit = defineEmits<{(e: 'submit', value: AuthenticateUserFormData): void }>()
 
-const schema: SchemaOf<LoginFormData> = yup.object({
-  email: yup.string().email().required(),
-  password: yup.string().required()
-})
-
-const { handleSubmit } = useForm<LoginFormData>({
-  validationSchema: schema
+const { handleSubmit } = useForm<AuthenticateUserFormData>({
+  validationSchema: {
+    email: 'email|required',
+    password: 'required'
+  }
 })
 
 const submit = handleSubmit(values => emit('submit', values))

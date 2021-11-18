@@ -1,9 +1,5 @@
 import cookieUniversal, { ICookie } from 'cookie-universal'
-
-export interface TokenStorage {
-  save (token: string): Promise<void>
-  load (): Promise<string | null>
-}
+import { TokenStorage } from '~/src/User/Auth/Domain/TokenStorage'
 
 export class LocalTokenStorage implements TokenStorage {
   readonly #token_key: string = 'token'

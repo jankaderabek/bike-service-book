@@ -10,6 +10,10 @@
       <NuxtLink to="/auth/login">
         Login
       </NuxtLink>
+
+      <NuxtLink to="/auth/me">
+        Profile
+      </NuxtLink>
     </div>
   </div>
 </template>

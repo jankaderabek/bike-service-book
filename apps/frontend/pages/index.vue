@@ -3,12 +3,17 @@
     <div class="text-black dark:text-white font-semibold p-4 flex flex-col">
       Tailwindcss Starter
 
-      <NuxtLink class="mt-5" to="modal">Go Modal Page</NuxtLink>
+      <NuxtLink class="mt-5" to="modal">
+        Go Modal Page
+      </NuxtLink><br>
+
+      <NuxtLink to="/auth/login">
+        Login
+      </NuxtLink>
+
+      <NuxtLink to="/auth/me">
+        Profile
+      </NuxtLink>
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import Header from '~/components/Header.vue'
-
-</script>

@@ -1,20 +1,19 @@
 import { defineNuxtConfig } from 'nuxt3'
 
-
 export default defineNuxtConfig({
-  ssr: false,
-  nitro: {
-    preset: 'server'
+  typescript: {
+    strict: true
   },
   build: {
     postcss: {
       postcssOptions: {
         plugins: {
           tailwindcss: {},
-          autoprefixer: {},
+          autoprefixer: {}
         }
       }
     },
+    transpile: ['vee-validate', '@vue/devtools-api', 'yup', 'lodash', 'lodash.has', 'lodash-es']
   },
   vite: {
     // @ts-ignore
@@ -22,8 +21,15 @@ export default defineNuxtConfig({
       noExternal: [
         '@headlessui/vue',
         '@heroicons/vue/outline',
-        '@heroicons/vue/solid'
+        '@heroicons/vue/solid',
+        'vee-validate',
+        '@vue/devtools-api',
+        'yup',
+        'nanoclone',
+        'lodash',
+        'lodash.has',
+        'lodash-es'
       ]
     }
-  },
+  }
 })

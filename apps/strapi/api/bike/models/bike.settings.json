@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bikes",
+  "info": {
+    "name": "Bike",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user"
+    }
+  }
+}

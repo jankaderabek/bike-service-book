@@ -1,4 +1,6 @@
+export type UserId = number
+
 export interface User {
-  id: number
+  id: UserId
   email: string
 }

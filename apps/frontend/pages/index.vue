@@ -14,6 +14,10 @@
       <NuxtLink to="/auth/me">
         Profile
       </NuxtLink>
+
+      <NuxtLink to="/bikes">
+        Bikes
+      </NuxtLink>
     </div>
   </div>
 </template>

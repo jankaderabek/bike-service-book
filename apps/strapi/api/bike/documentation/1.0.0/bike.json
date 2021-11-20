@@ -522,7 +522,7 @@
           "id": {
             "type": "string"
           },
-          "Title": {
+          "title": {
             "type": "string"
           },
           "user": {
@@ -578,7 +578,7 @@
       },
       "NewBike": {
         "properties": {
-          "Title": {
+          "title": {
             "type": "string"
           },
           "user": {

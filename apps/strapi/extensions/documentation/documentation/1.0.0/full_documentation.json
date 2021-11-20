@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "11/20/2021 10:32:55 PM"
+    "x-generation-date": "11/20/2021 10:48:20 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -2793,7 +2793,7 @@
           "id": {
             "type": "string"
           },
-          "Title": {
+          "title": {
             "type": "string"
           },
           "user": {
@@ -2849,7 +2849,7 @@
       },
       "NewBike": {
         "properties": {
-          "Title": {
+          "title": {
             "type": "string"
           },
           "user": {

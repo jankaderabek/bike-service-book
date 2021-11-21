@@ -1,4 +1,6 @@
+export type BikeProfileId = number
+
 export interface BikeProfile {
-  id: number
+  id: BikeProfileId
   title: string
 }

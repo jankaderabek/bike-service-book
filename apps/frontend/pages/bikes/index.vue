@@ -8,6 +8,9 @@
               <thead class="bg-gray-50">
                 <tr>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    ID
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Title
                   </th>
                   <th scope="col" class="relative px-6 py-3">
@@ -17,11 +20,18 @@
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
                 <tr v-for="bike in bikes" :key="bike.id">
+                  <td class="px-6 py-4 underline text-sm text-gray-500">
+                    <nuxt-link :to="`/bikes/${bike.id}/detail`">
+                      #{{ bike.id }}
+                    </nuxt-link>
+                  </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {{ bike.title }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                    <nuxt-link :to="`/bikes/${bike.id}/edit`" class="text-indigo-600 hover:text-indigo-900">
+                      Edit
+                    </nuxt-link>
                   </td>
                 </tr>
               </tbody>
@@ -36,12 +46,13 @@
 <script setup lang="ts">
 import { useBikeProfileRepository } from '~/src/Bike/Profile/Infrastructure/BikeProfileRepositoryProvider'
 import { useAuth } from '~/src/User/Auth/Application/AuthFacade'
+import { BikeProfile } from '~/src/Bike/Profile/Domain/BikeProfile'
 
 const bikeProfileRepository = useBikeProfileRepository()
 const authFacade = useAuth()
 
 const loggedUserId = authFacade.loggedUser.value?.id ?? 0
 
-const { data: bikes } = await useAsyncData('bikes', () => bikeProfileRepository.getUserBikes(loggedUserId))
+const { data: bikes } = await useAsyncData<BikeProfile[]>('bikes', () => bikeProfileRepository.getUserBikes(loggedUserId))
 
 </script>

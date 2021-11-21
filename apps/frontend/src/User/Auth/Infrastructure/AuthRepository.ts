@@ -2,7 +2,6 @@ import { AxiosInstance } from 'axios'
 import { AuthenticatedUserInfo } from '~/src/User/Auth/Domain/Model/AuthenticatedUserInfo'
 import { CreatedUserInfo, UserToCreate } from '~/src/User/Auth/Domain/Model/CreateUser'
 import { User } from '~/src/User/Domain/User'
-import { useAxios } from '~/composables/axios'
 import { AuthRepository } from '~/src/User/Auth/Domain/AuthRepository'
 
 export class AxiosAuthRepository implements AuthRepository {

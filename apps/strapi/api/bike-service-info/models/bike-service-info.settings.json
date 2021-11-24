@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bike_service_infos",
+  "info": {
+    "name": "BikeServiceInfo"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "bike": {
+      "model": "bike"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "note": {
+      "type": "text"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

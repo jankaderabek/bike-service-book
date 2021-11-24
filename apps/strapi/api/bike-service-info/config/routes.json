@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/bike-service-infos",
+      "handler": "bike-service-info.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bike-service-infos/count",
+      "handler": "bike-service-info.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bike-service-infos/:id",
+      "handler": "bike-service-info.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/bike-service-infos",
+      "handler": "bike-service-info.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/bike-service-infos/:id",
+      "handler": "bike-service-info.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/bike-service-infos/:id",
+      "handler": "bike-service-info.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

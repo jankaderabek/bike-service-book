@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/bike-distance-records",
+      "handler": "bike-distance-records.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bike-distance-records/count",
+      "handler": "bike-distance-records.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bike-distance-records/:id",
+      "handler": "bike-distance-records.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/bike-distance-records",
+      "handler": "bike-distance-records.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/bike-distance-records/:id",
+      "handler": "bike-distance-records.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/bike-distance-records/:id",
+      "handler": "bike-distance-records.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

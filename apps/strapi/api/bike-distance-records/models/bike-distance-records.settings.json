@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bike_distance_records",
+  "info": {
+    "name": "BikeDistanceRecords",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "date": {
+      "type": "datetime",
+      "required": false
+    },
+    "bike": {
+      "model": "bike"
+    },
+    "distance": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}
